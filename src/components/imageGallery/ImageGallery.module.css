@@ -1,0 +1,17 @@
+.ImageGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  list-style: none;
+  padding: 0;
+}
+.ImageGalleryItem {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
