@@ -9,7 +9,7 @@
     position: relative;
     height: 32px;
     width: 140px;
-    border: 3px solid #fff;
+    border: 3px solid #ef936c;
     border-radius: 20px;
     box-sizing: border-box;
   }
@@ -21,7 +21,7 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    background: #FF3D00;
+    background: #ef936c;
     animation: ballbns 2s ease-in-out infinite alternate;
   }
   @keyframes ballbns {
