@@ -5,15 +5,26 @@ const SearchBar = ({ onSearch }) => {
   const handleSearch = (evt) => {
     evt.preventDefault();
 
-    const notify = () => toast.error("Please enter search term!");
     const form = evt.target;
     const query = form.elements.query.value;
     if (query.trim() === "") {
-      notify();
+      toast.error("Please enter search term!");
       return;
     }
     onSearch(query);
     form.reset();
+  };
+
+  // SVG için ayrı fonksiyon
+  const handleIconClick = () => {
+    const input = document.querySelector(`.${css.searchbar}`);
+    const query = input.value;
+    if (query.trim() === "") {
+      toast.error("Please enter search term!");
+      return;
+    }
+    onSearch(query);
+    input.value = "";
   };
 
   return (
@@ -40,7 +51,7 @@ const SearchBar = ({ onSearch }) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               className={`${css.searchIcon}`}
-              onClick={handleSearch}
+              onClick={handleIconClick}
               style={{ cursor: "pointer" }}
             >
               <circle cx="11" cy="11" r="8" />
@@ -54,4 +65,5 @@ const SearchBar = ({ onSearch }) => {
     </>
   );
 };
+
 export default SearchBar;
