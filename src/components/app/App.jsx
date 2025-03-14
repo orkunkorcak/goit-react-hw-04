@@ -62,7 +62,7 @@ function App() {
       <ImageGallery images={images} onImageClick={handleImageClick} />
       {loading && <Loader />}
       {error && <ErrorMessage />}
-      <LoadMoreBtn onClick={handleLoadMore} />
+      {images.length > 0 && <LoadMoreBtn onClick={handleLoadMore} />}
       {selectedImage && (
         <ImageModal image={selectedImage} onClose={closeModal} />
       )}
