@@ -6,6 +6,7 @@ import ImageGallery from "../imageGallery/ImageGallery";
 import Loader from "../loader/Loader";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import LoadMoreBtn from "../loadMoreBtn/LoadMoreBtn";
+import ImageModal from "../imageModal/ImageModal";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -13,6 +14,7 @@ function App() {
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleSearch = async (searchQuery) => {
     try {
@@ -46,13 +48,24 @@ function App() {
     }
   };
 
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <>
       <SearchBar onSearch={handleSearch} />
-      <ImageGallery images={images} />
+      <ImageGallery images={images} onImageClick={handleImageClick} />
       {loading && <Loader />}
       {error && <ErrorMessage />}
       <LoadMoreBtn onClick={handleLoadMore} />
+      {selectedImage && (
+        <ImageModal image={selectedImage} onClose={closeModal} />
+      )}
     </>
   );
 }
